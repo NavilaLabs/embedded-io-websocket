@@ -4,9 +4,9 @@
 use std::collections::VecDeque;
 
 use embedded_io_websocket::{
-    blocking::Framer, Decision, FramerError, FramerState, ReadResult, WebSocketClient,
-    WebSocketReceiveMessageType, WebSocketSendMessageType, WebSocketServer, WebSocketState,
-    MIN_FRAME_BUF_LEN, MIN_READ_BUF_LEN, MIN_WRITE_BUF_LEN,
+    Decision, FramerError, FramerState, MIN_FRAME_BUF_LEN, MIN_READ_BUF_LEN, MIN_WRITE_BUF_LEN,
+    ReadResult, WebSocketClient, WebSocketReceiveMessageType, WebSocketSendMessageType,
+    WebSocketServer, WebSocketState, blocking::Framer,
 };
 
 const MAX_CONTROL_PAYLOAD: [u8; 125] = [b'p'; 125];

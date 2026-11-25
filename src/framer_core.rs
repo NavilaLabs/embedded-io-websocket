@@ -3,11 +3,10 @@ use core::{ops::Range, str::Utf8Error};
 use rand_core::Rng;
 
 use crate::{
-    head,
+    MASK_KEY_LEN, MAX_CONTROL_FRAME_PAYLOAD_LEN, WebSocket, WebSocketCloseStatusCode, WebSocketKey,
+    WebSocketOptions, WebSocketReceiveMessageType, WebSocketSendMessageType, WebSocketState,
+    WebSocketType, head,
     request::{Decision, Request},
-    WebSocket, WebSocketCloseStatusCode, WebSocketKey, WebSocketOptions,
-    WebSocketReceiveMessageType, WebSocketSendMessageType, WebSocketState, WebSocketType,
-    MASK_KEY_LEN, MAX_CONTROL_FRAME_PAYLOAD_LEN,
 };
 
 /// A whole websocket message read from the stream.
@@ -188,7 +187,7 @@ impl Message {
     ) -> Result<ReadResult<'_>, FramerError<E>> {
         Ok(match self {
             Message::BinaryChunk(_) | Message::TextChunk(_) => {
-                return Err(FramerError::WebSocket(crate::Error::Unknown))
+                return Err(FramerError::WebSocket(crate::Error::Unknown));
             }
             Message::Binary(len) => ReadResult::Binary(&frame_buf[..len]),
             Message::Text(len) => ReadResult::Text(

@@ -8,8 +8,8 @@
 
 use embedded_io_adapters::tokio_1::FromTokio;
 use embedded_io_websocket::{
-    asynch::Framer, FramerError, FramerState, ReadResult, WebSocketClient,
-    WebSocketCloseStatusCode, WebSocketOptions, WebSocketSendMessageType,
+    FramerError, FramerState, ReadResult, WebSocketClient, WebSocketCloseStatusCode,
+    WebSocketOptions, WebSocketSendMessageType, asynch::Framer,
 };
 use std::error::Error;
 use tokio::net::TcpStream;

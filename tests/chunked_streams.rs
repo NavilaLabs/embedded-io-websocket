@@ -4,9 +4,9 @@
 use std::collections::VecDeque;
 
 use embedded_io_websocket::{
-    blocking, FramerError, FramerState, ReadChunk, ReadResult, WebSocketClient,
-    WebSocketCloseStatusCode, WebSocketReceiveMessageType, WebSocketSendMessageType,
-    WebSocketServer, WebSocketState,
+    FramerError, FramerState, ReadChunk, ReadResult, WebSocketClient, WebSocketCloseStatusCode,
+    WebSocketReceiveMessageType, WebSocketSendMessageType, WebSocketServer, WebSocketState,
+    blocking,
 };
 use proptest::prelude::*;
 

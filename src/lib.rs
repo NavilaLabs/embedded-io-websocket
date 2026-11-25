@@ -79,8 +79,8 @@ mod head;
 mod request;
 mod url;
 pub use self::framer_core::{
-    FramerError, FramerState, ReadChunk, ReadResult, MIN_FRAME_BUF_LEN, MIN_READ_BUF_LEN,
-    MIN_WRITE_BUF_LEN,
+    FramerError, FramerState, MIN_FRAME_BUF_LEN, MIN_READ_BUF_LEN, MIN_WRITE_BUF_LEN, ReadChunk,
+    ReadResult,
 };
 pub use self::request::{Decision, Request};
 pub use self::url::WebSocketUrl;
@@ -89,7 +89,7 @@ pub use self::url::WebSocketUrl;
 #[cfg(fuzzing)]
 #[doc(hidden)]
 pub mod fuzzing {
-    use crate::{request::Request, Result, WebSocketKey};
+    use crate::{Result, WebSocketKey, request::Request};
 
     /// See `head::head_len`.
     pub fn head_len(buf: &[u8], searched: &mut usize) -> Option<usize> {
@@ -1608,9 +1608,11 @@ mod tests {
         }
         for status in [1012, 3000, 4999] {
             let mut to = [0; 16];
-            assert!(open_server()
-                .close(WebSocketCloseStatusCode::Custom(status), None, &mut to)
-                .is_ok());
+            assert!(
+                open_server()
+                    .close(WebSocketCloseStatusCode::Custom(status), None, &mut to)
+                    .is_ok()
+            );
         }
     }
 

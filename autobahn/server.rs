@@ -5,8 +5,8 @@ use std::net::{TcpListener, TcpStream};
 
 use embedded_io_adapters::std::FromStd;
 use embedded_io_websocket::{
-    blocking::Framer, Decision, FramerError, FramerState, ReadResult, WebSocketSendMessageType,
-    WebSocketServer,
+    Decision, FramerError, FramerState, ReadResult, WebSocketSendMessageType, WebSocketServer,
+    blocking::Framer,
 };
 
 // Autobahn sends messages of up to 16 MiB.

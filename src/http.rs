@@ -1,6 +1,6 @@
 use super::*;
 use crate::{head, url};
-use base64::{engine::general_purpose::STANDARD as BASE64, Engine};
+use base64::{Engine, engine::general_purpose::STANDARD as BASE64};
 use heapless::String;
 
 // Writes text into the start of a buffer.
@@ -448,9 +448,11 @@ mod tests {
                 "{sub_protocols:?}"
             );
         }
-        assert!(request_with_sub_protocols(&["chat", "Chat", "v1.json~"])
-            .unwrap()
-            .contains("\r\nSec-WebSocket-Protocol: chat, Chat, v1.json~\r\n"));
+        assert!(
+            request_with_sub_protocols(&["chat", "Chat", "v1.json~"])
+                .unwrap()
+                .contains("\r\nSec-WebSocket-Protocol: chat, Chat, v1.json~\r\n")
+        );
     }
 
     #[test]

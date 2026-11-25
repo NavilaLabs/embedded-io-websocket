@@ -10,11 +10,11 @@ use embedded_io::{Read, Write};
 use rand_core::Rng;
 
 use crate::{
-    framer_core::{Answer, Decoded, FramerCore, Message, ReadMode},
-    request::BAD_REQUEST,
     Decision, FramerError, FramerState, ReadChunk, ReadResult, Request, WebSocket,
     WebSocketCloseStatusCode, WebSocketOptions, WebSocketSendMessageType, WebSocketState,
     WebSocketType,
+    framer_core::{Answer, Decoded, FramerCore, Message, ReadMode},
+    request::BAD_REQUEST,
 };
 
 /// Reads and writes whole websocket messages over a blocking stream.
@@ -600,7 +600,7 @@ mod tests {
 
     #[test]
     fn frames_received_with_handshake_response() {
-        use rand::{rngs::StdRng, SeedableRng};
+        use rand::{SeedableRng, rngs::StdRng};
 
         let mut request = vec![0; 1024];
         let (len, _) = WebSocketClient::new_client(StdRng::seed_from_u64(1))
@@ -1381,14 +1381,16 @@ mod tests {
         let mut framer = Framer::new(&mut read_buf, &mut state, &mut write_buf, &mut ws_server);
         let mut stream = ScriptedStream::new();
         stream.write_budget = 10;
-        assert!(framer
-            .write(
-                &mut stream,
-                WebSocketSendMessageType::Binary,
-                true,
-                &[0; 150]
-            )
-            .is_err());
+        assert!(
+            framer
+                .write(
+                    &mut stream,
+                    WebSocketSendMessageType::Binary,
+                    true,
+                    &[0; 150]
+                )
+                .is_err()
+        );
         stream.write_budget = usize::MAX;
         assert!(matches!(
             framer.write(&mut stream, WebSocketSendMessageType::Text, true, b"other"),

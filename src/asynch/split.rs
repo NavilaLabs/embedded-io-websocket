@@ -1,6 +1,6 @@
 use core::{
     cell::{Cell, RefCell, RefMut},
-    future::{poll_fn, Future},
+    future::{Future, poll_fn},
     ops::{Deref, DerefMut},
     task::{Poll, Waker},
 };
@@ -10,9 +10,9 @@ use rand_core::Rng;
 
 use super::{send, send_unsent};
 use crate::{
-    framer_core::{Decoded, FramerCore, Message, ReadMode},
     FramerError, FramerState, ReadChunk, ReadResult, WebSocket, WebSocketCloseStatusCode,
     WebSocketSendMessageType, WebSocketType,
+    framer_core::{Decoded, FramerCore, Message, ReadMode},
 };
 
 /// An async lock that the [`Reader`] and [`Writer`] of a connection share.

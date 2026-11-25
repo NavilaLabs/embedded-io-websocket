@@ -5,8 +5,8 @@ use std::net::TcpStream;
 
 use embedded_io_adapters::std::FromStd;
 use embedded_io_websocket::{
-    blocking::Framer, FramerError, FramerState, ReadResult, WebSocketClient, WebSocketOptions,
-    WebSocketSendMessageType,
+    FramerError, FramerState, ReadResult, WebSocketClient, WebSocketOptions,
+    WebSocketSendMessageType, blocking::Framer,
 };
 
 const ADDRESS: &str = "127.0.0.1:9001";

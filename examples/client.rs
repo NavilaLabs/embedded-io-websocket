@@ -8,8 +8,8 @@
 
 use embedded_io_adapters::std::FromStd;
 use embedded_io_websocket::{
-    blocking::Framer, FramerError, FramerState, ReadResult, WebSocketClient,
-    WebSocketCloseStatusCode, WebSocketOptions, WebSocketSendMessageType,
+    FramerError, FramerState, ReadResult, WebSocketClient, WebSocketCloseStatusCode,
+    WebSocketOptions, WebSocketSendMessageType, blocking::Framer,
 };
 use std::error::Error;
 use std::net::TcpStream;

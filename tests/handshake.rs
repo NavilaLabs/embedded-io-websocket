@@ -3,8 +3,8 @@
 use std::collections::VecDeque;
 
 use embedded_io_websocket::{
-    blocking::Framer, Error, FramerState, Request, WebSocketClient, WebSocketKey, WebSocketOptions,
-    WebSocketServer,
+    Error, FramerState, Request, WebSocketClient, WebSocketKey, WebSocketOptions, WebSocketServer,
+    blocking::Framer,
 };
 
 const KEY: &str = "dGhlIHNhbXBsZSBub25jZQ==";

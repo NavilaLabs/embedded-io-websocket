@@ -9,9 +9,9 @@ use core::{
 use std::{cell::RefCell, collections::VecDeque, rc::Rc};
 
 use embedded_io_websocket::{
-    asynch::{LocalMutex, Lock, Reader, Shared, Writer},
     FramerState, ReadResult, WebSocketClient, WebSocketReceiveMessageType,
     WebSocketSendMessageType, WebSocketServer, WebSocketState,
+    asynch::{LocalMutex, Lock, Reader, Shared, Writer},
 };
 use proptest::prelude::*;
 
@@ -475,8 +475,8 @@ fn reader_keeps_received_bytes_when_cancelled_while_waiting_for_the_lock() {
 fn local_mutex_wakes_the_waiting_task_on_unlock() {
     use std::{
         sync::{
-            atomic::{AtomicUsize, Ordering},
             Arc,
+            atomic::{AtomicUsize, Ordering},
         },
         task::Wake,
     };
@@ -496,10 +496,12 @@ fn local_mutex_wakes_the_waiting_task_on_unlock() {
         panic!("the mutex is free");
     };
     let mut waiting = pin!(mutex.lock());
-    assert!(waiting
-        .as_mut()
-        .poll(&mut Context::from_waker(&waker))
-        .is_pending());
+    assert!(
+        waiting
+            .as_mut()
+            .poll(&mut Context::from_waker(&waker))
+            .is_pending()
+    );
     assert_eq!(counter.0.load(Ordering::SeqCst), 0);
 
     drop(guard);

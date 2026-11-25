@@ -1,11 +1,11 @@
 use core::{net::Ipv6Addr, str};
 
-use base64::{engine::general_purpose::STANDARD as BASE64, Engine};
+use base64::{Engine, engine::general_purpose::STANDARD as BASE64};
 
 use crate::{
-    head::{self, is_token_byte, Head},
-    url::is_percent_encoding_valid,
     Error, Result, WebSocketKey,
+    head::{self, Head, is_token_byte},
+    url::is_percent_encoding_valid,
 };
 
 pub(crate) const BAD_REQUEST: &[u8] =

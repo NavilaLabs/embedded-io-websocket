@@ -14,8 +14,8 @@ use embedded_io_adapters::tokio_1::FromTokio;
 use tokio::net::{TcpListener, TcpStream};
 
 use embedded_io_websocket::{
-    asynch::Framer, Decision, FramerError, FramerState, ReadResult, WebSocketSendMessageType,
-    WebSocketServer,
+    Decision, FramerError, FramerState, ReadResult, WebSocketSendMessageType, WebSocketServer,
+    asynch::Framer,
 };
 
 #[tokio::main]
