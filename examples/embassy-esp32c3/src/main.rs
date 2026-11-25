@@ -13,9 +13,9 @@
 #![no_std]
 #![no_main]
 
-use embassy_common::{serve_echo, sntp, wss_echo, Buffers, NetworkClock, WssTarget};
+use embassy_common::{Buffers, NetworkClock, WssTarget, serve_echo, sntp, wss_echo};
 use embassy_executor::Spawner;
-use embassy_net::{dns::DnsQueryType, tcp::TcpSocket, Runner, Stack, StackResources};
+use embassy_net::{Runner, Stack, StackResources, dns::DnsQueryType, tcp::TcpSocket};
 use embassy_time::{Duration, Timer};
 use esp_alloc as _;
 use esp_backtrace as _;
@@ -27,8 +27,8 @@ use esp_hal::{
 };
 use esp_println::println;
 use esp_radio::wifi::{
-    sta::StationConfig, AuthenticationMethodConfig, Config, ControllerConfig, Interface,
-    WifiController,
+    AuthenticationMethodConfig, Config, ControllerConfig, Interface, WifiController,
+    sta::StationConfig,
 };
 use static_cell::StaticCell;
 

@@ -10,13 +10,13 @@ pub mod sntp;
 
 use embedded_io_async::{Read, Write};
 use embedded_io_websocket::{
-    asynch::Framer, Decision, FramerError, FramerState, ReadResult, WebSocketClient,
+    Decision, FramerError, FramerState, MIN_FRAME_BUF_LEN, ReadResult, WebSocketClient,
     WebSocketCloseStatusCode, WebSocketOptions, WebSocketSendMessageType, WebSocketServer,
-    MIN_FRAME_BUF_LEN,
+    asynch::Framer,
 };
 use embedded_tls::{
-    webpki::CertVerifier, Aes128GcmSha256, Certificate, TlsClock, TlsConfig, TlsConnection,
-    TlsContext, TlsError,
+    Aes128GcmSha256, Certificate, TlsClock, TlsConfig, TlsConnection, TlsContext, TlsError,
+    webpki::CertVerifier,
 };
 use rand_core::CryptoRng;
 // a crate that is never named is not linked, and this one provides the software crypto drivers

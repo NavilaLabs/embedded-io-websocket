@@ -1,7 +1,7 @@
 [package]
 name = "size-probes"
 version = "0.0.0"
-edition = "2021"
+edition = "2024"
 publish = false
 description = "Minimal firmwares that measure the flash and RAM the library needs on a Cortex-M4F"
 

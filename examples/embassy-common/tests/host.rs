@@ -6,20 +6,20 @@ mod server_without_certificate;
 
 use std::{net::SocketAddr, sync::Arc, time::SystemTime};
 
-use embassy_common::{serve_echo, wss_echo, Buffers, Error, WssTarget};
+use embassy_common::{Buffers, Error, WssTarget, serve_echo, wss_echo};
 use embedded_io_adapters::tokio_1::FromTokio;
 use embedded_tls::TlsClock;
 use rcgen::{
-    date_time_ymd, BasicConstraints, CertificateParams, CertifiedIssuer, IsCa, Issuer, KeyPair,
-    KeyUsagePurpose,
+    BasicConstraints, CertificateParams, CertifiedIssuer, IsCa, Issuer, KeyPair, KeyUsagePurpose,
+    date_time_ymd,
 };
 use tokio::net::{TcpListener, TcpStream};
 use tokio_rustls::{
+    TlsAcceptor,
     rustls::{
         self,
         pki_types::{CertificateDer, PrivateKeyDer, PrivatePkcs8KeyDer},
     },
-    TlsAcceptor,
 };
 // links the operating system random number generator and the software crypto drivers
 use {embassy_crypto_rand as _, embassy_crypto_rustcrypto as _};

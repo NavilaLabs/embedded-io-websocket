@@ -13,12 +13,12 @@
 #![no_std]
 #![no_main]
 
-use cyw43::{aligned_bytes, JoinOptions};
-use cyw43_pio::{PioSpi, DEFAULT_CLOCK_DIVIDER};
-use defmt::{info, unwrap, warn, Debug2Format};
-use embassy_common::{serve_echo, sntp, wss_echo, Buffers, NetworkClock, WssTarget};
+use cyw43::{JoinOptions, aligned_bytes};
+use cyw43_pio::{DEFAULT_CLOCK_DIVIDER, PioSpi};
+use defmt::{Debug2Format, info, unwrap, warn};
+use embassy_common::{Buffers, NetworkClock, WssTarget, serve_echo, sntp, wss_echo};
 use embassy_executor::Spawner;
-use embassy_net::{dns::DnsQueryType, tcp::TcpSocket, Config, Stack, StackResources};
+use embassy_net::{Config, Stack, StackResources, dns::DnsQueryType, tcp::TcpSocket};
 use embassy_rp::{
     bind_interrupts,
     clocks::RoscRng,
@@ -28,7 +28,7 @@ use embassy_rp::{
     pio::{InterruptHandler, Pio},
 };
 use embassy_time::Duration;
-use rand_chacha::{rand_core::SeedableRng, ChaCha8Rng};
+use rand_chacha::{ChaCha8Rng, rand_core::SeedableRng};
 use static_cell::StaticCell;
 use {defmt_rtt as _, panic_probe as _};
 

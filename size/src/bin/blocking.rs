@@ -5,8 +5,8 @@
 use core::hint::black_box;
 
 use embedded_io_websocket::{
-    blocking::Framer, Decision, FramerState, WebSocketClient, WebSocketCloseStatusCode,
-    WebSocketOptions, WebSocketSendMessageType, WebSocketServer,
+    Decision, FramerState, WebSocketClient, WebSocketCloseStatusCode, WebSocketOptions,
+    WebSocketSendMessageType, WebSocketServer, blocking::Framer,
 };
 use size_probes::{Random, Stream};
 

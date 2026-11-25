@@ -3,7 +3,7 @@
 #![no_main]
 
 use embedded_io_websocket::{
-    blocking::Framer, Decision, FramerState, ReadChunk, ReadResult, WebSocketServer,
+    Decision, FramerState, ReadChunk, ReadResult, WebSocketServer, blocking::Framer,
 };
 use libfuzzer_sys::fuzz_target;
 

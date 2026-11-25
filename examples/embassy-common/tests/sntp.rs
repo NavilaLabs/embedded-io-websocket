@@ -1,6 +1,6 @@
 //! The SNTP messages and the clock that the TLS verifier reads.
 
-use embassy_common::{sntp, NetworkClock};
+use embassy_common::{NetworkClock, sntp};
 use embedded_tls::TlsClock;
 
 const NONCE: [u8; 8] = [1, 2, 3, 4, 5, 6, 7, 8];

@@ -6,8 +6,8 @@
 use core::mem::size_of;
 
 use embedded_io_websocket::{
-    asynch, blocking, EmptyRng, FramerState, ReadChunk, ReadResult, WebSocketClient,
-    WebSocketServer,
+    EmptyRng, FramerState, ReadChunk, ReadResult, WebSocketClient, WebSocketServer, asynch,
+    blocking,
 };
 use size_probes::Stream;
 
@@ -18,7 +18,7 @@ macro_rules! sizes {
     ($($name:ident: $type:ty),* $(,)?) => {
         $(
             #[used]
-            #[no_mangle]
+            #[unsafe(no_mangle)]
             static $name: [u8; size_of::<$type>()] = [0; size_of::<$type>()];
         )*
     };

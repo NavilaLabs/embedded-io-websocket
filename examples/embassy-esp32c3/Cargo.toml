@@ -1,7 +1,7 @@
 [package]
 name = "embassy-esp32c3"
 version = "0.0.0"
-edition = "2021"
+edition = "2024"
 publish = false
 description = "A wss:// client and a ws:// echo server on an ESP32-C3"
 

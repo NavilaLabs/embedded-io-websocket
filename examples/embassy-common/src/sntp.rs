@@ -6,11 +6,11 @@
 use core::sync::atomic::{AtomicU32, Ordering};
 
 use embassy_net::{
+    Stack,
     dns::DnsQueryType,
     udp::{PacketMetadata, UdpSocket},
-    Stack,
 };
-use embassy_time::{with_timeout, Duration, Instant};
+use embassy_time::{Duration, Instant, with_timeout};
 use embedded_tls::TlsClock;
 
 const MESSAGE_LEN: usize = 48;

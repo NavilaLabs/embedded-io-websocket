@@ -5,10 +5,10 @@
 
 use std::{net::SocketAddr, time::Duration};
 
-use aes_gcm::{aead::Aead, aead::Payload, Aes128Gcm, KeyInit, Nonce};
+use aes_gcm::{Aes128Gcm, KeyInit, Nonce, aead::Aead, aead::Payload};
 use hkdf::Hkdf;
 use hmac::{Hmac, Mac};
-use p256::{ecdh::EphemeralSecret, EncodedPoint, PublicKey};
+use p256::{EncodedPoint, PublicKey, ecdh::EphemeralSecret};
 use sha2::{Digest, Sha256};
 use tokio::{
     io::{AsyncReadExt, AsyncWriteExt},

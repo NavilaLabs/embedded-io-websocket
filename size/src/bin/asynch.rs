@@ -5,11 +5,11 @@
 use core::hint::black_box;
 
 use embedded_io_websocket::{
-    asynch::{Framer, LocalMutex, Reader, Shared, Writer},
     Decision, FramerState, WebSocketClient, WebSocketCloseStatusCode, WebSocketOptions,
     WebSocketSendMessageType, WebSocketServer,
+    asynch::{Framer, LocalMutex, Reader, Shared, Writer},
 };
-use size_probes::{poll_once, Random, Stream};
+use size_probes::{Random, Stream, poll_once};
 
 #[cortex_m_rt::entry]
 fn main() -> ! {
